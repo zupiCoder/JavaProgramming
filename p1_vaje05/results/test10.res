@@ -1,0 +1,8 @@
+5000 Ep -> zgoscenka 1 [5000, 0, 0]
+2500 Ep -> zgoscenka 2 [5000, 2500, 0]
+1250 Ep -> zgoscenka 3 [5000, 2500, 1250]
+1251 Ep -> zgoscenka 3 [5000, 2500, 2501]
+5000 Ep -> zgoscenka 2 [5000, 7500, 2501]
+2500 Ep -> zgoscenka 3 [5000, 7500, 5001]
+1250 Ep -> zgoscenka 1 [6250, 7500, 5001]
+1251 Ep -> zgoscenka 3 [6250, 7500, 6252]
