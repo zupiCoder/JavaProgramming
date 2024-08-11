@@ -1,4 +1,5 @@
 /predavanja/
 **/*.class
 **/*.exe
-
+**/*.res
+**/*.htm
