@@ -1,8 +1,3 @@
-
-/*
- * tj.exe
- */
-
 public class Tretja {
 
     public static abstract class Predavalnica {
@@ -24,7 +19,7 @@ public class Tretja {
 
         // popravite / dopolnite ...
         public int casCiscenja() {
-            return -1;
+            return this.vrniSteviloMest() * 2;
         }
     }
 
@@ -46,6 +41,11 @@ public class Tretja {
         public int vrniSteviloRacunalnikov() {
             return this.stRacunalnikov;
         }
+
+        @Override
+        public int casCiscenja() {
+            return this.vrniSteviloRacunalnikov() * 3 + this.vrniSteviloMest() * 2;
+        }
     }
 
     public static class Garaza extends Predavalnica {
@@ -54,6 +54,11 @@ public class Tretja {
         public Garaza(String oznaka, int stMest, int povrsina) {
             super(oznaka, stMest);
             this.povrsina = povrsina;
+        }
+
+        @Override
+        public int casCiscenja() {
+            return this.vrniSteviloMest() * 2 + this.povrsina;
         }
     }
 
@@ -73,12 +78,55 @@ public class Tretja {
         }
 
         public int[] razporedi(int stStudentov, int[] ostanek) {
-            // popravite / dopolnite ...
-            return null;
+            int[] razpored = new int[this.predavalnice.length];
+            int remainingStudents = stStudentov;
+        
+            for (int x = 0; x < this.predavalnice.length; x++) {
+                if (this.predavalnice[x] instanceof Avditorna) {
+                    int roomCapacity = this.predavalnice[x].vrniSteviloMest();
+                    if (remainingStudents <= roomCapacity) {
+                        razpored[x] = remainingStudents;
+                        remainingStudents = 0;
+                        break;
+                    } else {
+                        razpored[x] = roomCapacity;
+                        remainingStudents -= roomCapacity;
+                    }
+                }
+            }
+        
+            for (int x = 0; x < this.predavalnice.length; x++) {
+                if (this.predavalnice[x] instanceof Racunalnica) {
+                    int roomCapacity = this.predavalnice[x].vrniSteviloMest();
+                    if (remainingStudents <= roomCapacity) {
+                        razpored[x] = remainingStudents;
+                        remainingStudents = 0;
+                        break;
+                    } else {
+                        razpored[x] = roomCapacity;
+                        remainingStudents -= roomCapacity;
+                    }
+                }
+            }
+        
+            for (int x = 0; x < this.predavalnice.length; x++) {
+                if (this.predavalnice[x] instanceof Garaza) {
+                    int roomCapacity = this.predavalnice[x].vrniSteviloMest();
+                    if (remainingStudents <= roomCapacity) {
+                        razpored[x] = remainingStudents;
+                        remainingStudents = 0;
+                        break;
+                    } else {
+                        razpored[x] = roomCapacity;
+                        remainingStudents -= roomCapacity;
+                    }
+                }
+            }
+        
+            ostanek[0] = remainingStudents;
+        
+            return razpored;
         }
-    }
-
-    public static void main(String[] args) {
-        // koda za ro"cno testiranje (po potrebi)
+        
     }
 }
