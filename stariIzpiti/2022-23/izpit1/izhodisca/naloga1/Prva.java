@@ -15,6 +15,22 @@ import java.util.*;
 public class Prva {
 
     public static void main(String[] args) {
-        // dopolnite ...
+
+        Scanner sc = new Scanner(System.in);
+
+        int max = Integer.MIN_VALUE;
+
+        int input = sc.nextInt();
+        int temp = input;
+
+        while(sc.hasNextInt()) {
+            input = sc.nextInt();
+
+            if(input + temp > max) {
+                max = input + temp;
+            }
+            temp = input;
+        }
+        System.out.println(max);
     }
 }
