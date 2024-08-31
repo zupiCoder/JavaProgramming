@@ -18,7 +18,6 @@ public class Druga {
                 }
             }
         }
-
         return newIgralci;
     }
 
@@ -48,7 +47,6 @@ public class Druga {
             X += smer;
             igralci = premakniIgralce(igralci, start_Y);
         }
-
         return distance;
     }
 }

@@ -1,36 +1,37 @@
-
-/*
- * Samodejno testiranje:
- * tj.exe
- *
- * Javni testni primeri:
- * 01: primer iz besedila
- * 02, 03: manj"sa la"zja primera (vsaka navpi"cna premica seka natanko eno polico)
- * 04..06: ve"cji la"zji primeri
- * 07: manj"si splo"sni primer
- * 08..10: ve"cji splo"sni primeri
- *
- * Skriti testni primeri:
- * 01..25: la"zji
- * 26..50: splo"sni
- *
- * Za vsako polico velja x >= 0, d >= 1, x + d <= m, y >= 1 in y <= m
- * (d je dol"zina police).  Police se med seboj ne prekrivajo.
- */
-
 import java.util.*;
 
 public class Druga {
 
+    public static int[][] postaviPolice(int m, int[][] p) {
+
+        int[][] police = new int[m][m];
+
+        for (int i = 0; i < p.length; i++) {
+            int x = p[i][0];
+            int y = p[i][1];
+            int dolzina_police = p[i][2];
+
+            for (int xx = x; xx < (x + dolzina_police); xx++) {
+                police[xx][y] = 1;
+            }
+        }
+        return police;
+    }
+
     public static int najGlobina(int m, int[][] p) {
-        // popravite / dopolnite ...
-        return -1;
+        int max_d = 0;
+
+        int[][] police = postaviPolice(m, p);
+
+        for (int i = 0; i < m; i++) {
+            int d = 0;
+            for (int j = 0; j < m; j++) {
+                if (police[i][j] == 1) break;
+                d++;
+            }
+
+            if (d > max_d) max_d = d;
+        }
+        return max_d;
     }
-
-    // pomo"zne metode, notranji razredi (po potrebi) ...
-
-    public static void main(String[] args) {
-        // koda za ro"cno testiranje (po potrebi)
-    }
-
 }

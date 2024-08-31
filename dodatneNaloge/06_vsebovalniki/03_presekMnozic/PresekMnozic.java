@@ -5,13 +5,13 @@ import java.util.Set;
 public class PresekMnozic {
 
     public static <T> Set<T> presek(Collection<Set<T>> mnozice) {
+        Set<T> novaMnozica = new HashSet<>();
+        boolean first = true;
 
-        Set<T> novaMnozica = null;
-
-        for(Set<T> mnozica: mnozice) {
-
-            if(novaMnozica == null) {
-                novaMnozica = new HashSet<>(mnozica);
+        for (Set<T> mnozica : mnozice) {
+            if (first) {
+                novaMnozica.addAll(mnozica);
+                first = false;
             } else {
                 novaMnozica.retainAll(mnozica);
             }
